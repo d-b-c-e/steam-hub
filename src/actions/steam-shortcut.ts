@@ -30,6 +30,7 @@ const DESTINATIONS = {
   // Community and captures
   friends: { url: "steam://open/friends", title: "Friends" },
   inventory: { url: "steam://open/inventory", title: "Inven\ntory" },
+  market: { url: "steam://openurl/https://steamcommunity.com/market/", title: "Market" },
   screenshots: { url: "steam://open/screenshots", title: "Screen\nshots" },
   media: { url: "steam://open/media", title: "Clips" },
   recording: { url: "steam://open/recording", title: "Record\ning" },

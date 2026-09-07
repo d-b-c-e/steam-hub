@@ -22,9 +22,14 @@ export async function launchGame(appId: string): Promise<void> {
  * Every verb here was read out of `steamui.dll` rather than guessed, so the list matches what the
  * client actually handles. Anything outside it is refused, which keeps a URL from ever reaching
  * the system protocol handler by accident.
+ *
+ * The Community Market has no dedicated verb of its own; `steamui.dll` only exposes it through the
+ * generic `openurl/%s` (opens a URL in Steam's own browser). That verb takes an arbitrary URL as
+ * its argument, so rather than opening the allowlist to any URL, only the literal Market address is
+ * permitted through it.
  */
 const ALLOWED_URL =
-  /^steam:\/\/(?:rungameid\/\d{1,10}|open\/[a-z]+|close\/bigpicture|friends\/status\/(?:online|away|invisible|offline)|nav\/[a-z]+|settings\/[a-z]+|checkforupdates|changeuser|startsteamvr|stopstreaming|store(?:\/\d{1,10})?|uninstall\/\d{1,10}|url\/GameHub\/\d{1,10}|exit)$/;
+  /^steam:\/\/(?:rungameid\/\d{1,10}|open\/[a-z]+|close\/bigpicture|friends\/status\/(?:online|away|invisible|offline)|nav\/[a-z]+|settings\/[a-z]+|checkforupdates|changeuser|startsteamvr|stopstreaming|store(?:\/\d{1,10})?|uninstall\/\d{1,10}|url\/GameHub\/\d{1,10}|openurl\/https:\/\/steamcommunity\.com\/market\/|exit)$/;
 
 /**
  * Opens a `steam://` URL.
