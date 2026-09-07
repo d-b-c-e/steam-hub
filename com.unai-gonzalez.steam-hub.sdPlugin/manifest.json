@@ -138,7 +138,7 @@
     {
       "Name": "Library dial",
       "UUID": "com.unai-gonzalez.steam-hub.library-dial",
-      "Icon": "imgs/actions/slot/icon",
+      "Icon": "imgs/actions/slot/dialIcon",
       "Tooltip": "Turn to browse your installed games, press to launch, tap to open the Steam page.",
       "PropertyInspectorPath": "ui/library-dial.html",
       "Controllers": [
@@ -155,7 +155,7 @@
       },
       "States": [
         {
-          "Image": "imgs/actions/slot/key",
+          "Image": "imgs/actions/slot/dialKey",
           "TitleAlignment": "middle"
         }
       ]
