@@ -1,8 +1,8 @@
 # Contributing to Steam Hub
 
 This guide covers the thing that needs the most help right now, adding the "Show
-installed games" profile for Elgato devices that don't have one yet. Only the original
-Stream Deck/MK2 and the Stream Deck + XL are covered today.
+installed games" profile for Elgato devices that don't have one yet. The original
+Stream Deck/MK2, the Stream Deck XL, the Stream Deck + and the Stream Deck + XL are covered today.
 
 ## 1. Why a device needs its own profile
 
@@ -11,7 +11,8 @@ plugin's bundled profiles under `"Profiles"`, one entry per `DeviceType`. There'
 entry for `DeviceType: 0` (the original Stream Deck and the MK2, which share the same 5x3
 grid), pointing at
 [`Steam Hub.streamDeckProfile`](com.unai-gonzalez.steam-hub.sdPlugin/Steam%20Hub.streamDeckProfile),
-and one for `DeviceType: 13` (the Stream Deck + XL, 9x4). A device with no entry gets no
+plus entries for `DeviceType: 2` (the Stream Deck XL, 8x4), `DeviceType: 7` (the Stream
+Deck +, 4x2) and `DeviceType: 13` (the Stream Deck + XL, 9x4). A device with no entry gets no
 ready-to-use profile, because a profile is built around one specific grid and can't be
 reused across devices of different shapes.
 
