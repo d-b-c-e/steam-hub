@@ -16,6 +16,7 @@ const PROFILE_BY_DEVICE: Partial<Record<DeviceType, string>> = {
   [DeviceType.StreamDeck]: "Steam Hub",
   [DeviceType.StreamDeckPlus]: "Steam Hub +",
   [DeviceType.StreamDeckXL]: "Steam Hub XL",
+  [DeviceType.StreamDeckPlusXL]: "Steam Hub + XL",
 };
 
 /**
