@@ -1,41 +1,52 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>Now Playing</title>
+    <title>Library Dial</title>
     <meta charset="utf-8" />
     <script src="lib/sdpi-components.js"></script>
     <link rel="stylesheet" href="lib/pi.css" />
   </head>
 
   <body>
+    <sdpi-item label="Order">
+      <sdpi-select setting="sortOrder" default="name">
+        <option value="name">Name</option>
+        <option value="recent">Recently played</option>
+        <option value="size">Size on disk</option>
+      </sdpi-select>
+    </sdpi-item>
 
     <sdpi-item label="Image">
-      <sdpi-select setting="artStyle" default="logo">
-        <option value="capsule">Vertical capsule</option>
-        <option value="header">Banner</option>
-        <option value="logo">Logo on background</option>
+      <sdpi-select setting="artStyle" default="hero">
         <option value="hero">Wide background</option>
+        <option value="header">Banner</option>
+        <option value="capsule">Vertical capsule</option>
+        <option value="logo">Logo on background</option>
         <option value="none">No image</option>
       </sdpi-select>
     </sdpi-item>
 
     <sdpi-item label="Framing">
       <sdpi-select setting="artFit" default="fill">
-        <option value="fill">Fill the key</option>
+        <option value="fill">Fill the display</option>
         <option value="fit">Show it all</option>
       </sdpi-select>
     </sdpi-item>
 
-    <sdpi-item label="Title">
-      <sdpi-checkbox setting="showTitle" label="Write the game name on the key"></sdpi-checkbox>
+    <sdpi-item label="Tap opens">
+      <sdpi-select setting="tapOpens" default="store">
+        <option value="store">Store page</option>
+        <option value="hub">Community hub</option>
+        <option value="none">Nothing</option>
+      </sdpi-select>
     </sdpi-item>
 
     <sdpi-item label="Status">
-      <sdpi-checkbox
-        setting="showStatus"
-        default="true"
-        label="Frame the key while running or updating"
-      ></sdpi-checkbox>
+      <sdpi-checkbox setting="showStatus" default="true" label="Frame the art while the game is running"></sdpi-checkbox>
+    </sdpi-item>
+
+    <sdpi-item label="Play time">
+      <sdpi-checkbox setting="showPlayTime" default="true" label="Count up while the game on show is running"></sdpi-checkbox>
     </sdpi-item>
 
     <sdpi-item label="Support">

@@ -9,7 +9,7 @@ import streamDeck, {
   type WillDisappearEvent,
 } from "@elgato/streamdeck";
 
-import { type ArtFit, type ArtStyle, renderKeyImage } from "../steam/artwork";
+import { type ArtFit, type ArtStyle, renderKeyImage, type StatusBadge } from "../steam/artwork";
 import { openSteamUrl } from "../steam/launch";
 import { addStatusListener, removeStatusListener } from "../steam/monitor";
 import { getRunningGame, type RunningGame } from "../steam/running";
@@ -27,6 +27,9 @@ type NowPlayingSettings = {
 
   /** Whether the game's name is drawn over the art. */
   showTitle?: boolean;
+
+  /** Whether the running/updating border is drawn over the art. */
+  showStatus?: boolean;
 };
 
 const DEFAULT_STYLE: ArtStyle = "logo";
@@ -150,10 +153,11 @@ export class NowPlaying extends SingletonAction<NowPlayingSettings> {
    */
   async #paint(target: KeyAction<NowPlayingSettings>, settings: NowPlayingSettings): Promise<void> {
     const current = this.#current;
+    const badge: StatusBadge = current !== undefined && settings.showStatus !== false ? current.badge : "idle";
     const signature =
       current === undefined
         ? "idle"
-        : `${current.game.appId}:${current.badge}:${settings.artStyle ?? DEFAULT_STYLE}:${settings.artFit ?? DEFAULT_FIT}:${settings.showTitle === true}`;
+        : `${current.game.appId}:${badge}:${settings.artStyle ?? DEFAULT_STYLE}:${settings.artFit ?? DEFAULT_FIT}:${settings.showTitle === true}`;
 
     if (this.#drawn.get(target.id) === signature) {
       return;
@@ -171,7 +175,7 @@ export class NowPlaying extends SingletonAction<NowPlayingSettings> {
       current.game.appId,
       settings.artStyle ?? DEFAULT_STYLE,
       settings.artFit ?? DEFAULT_FIT,
-      current.badge,
+      badge,
     );
 
     await target.setImage(image);
